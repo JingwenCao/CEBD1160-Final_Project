@@ -3,7 +3,7 @@ Instructions and template for final projects.
 
 | Name | Date |
 |:-------|:---------------|
-|Your name here | Completion date|
+|Jingwen Cao | Completion date|
 
 -----
 
@@ -19,7 +19,7 @@ Your repository should include the following:
 
 ## Research Question
 
-1 sentence description of your research question.
+Which attributes best predict whether a tumor is benign or malignant?
 
 ### Abstract
 
@@ -32,11 +32,26 @@ Your repository should include the following:
 
 ### Introduction
 
+Digitized images of a fine needled aspirate were taken of a breast mass. 10 features are described of each image (mean, sandard error, and "worst" or largest (mean of the three largest values):
+a) radius (mean of distances from center to points on the perimeter)
+b) texture (standard deviation of gray scale values)
+c) perimeter
+d) area
+e) smoothness (local variation in radius lengths)
+f) compactness (perimeter^2 / area - 1.0)
+g) concavity (severity of concave portions of the contour)
+h) concave points (number of concave portions of the contour)
+i) symmetry
+j) fractal dimension ("coastline approximation" - 1)
+In addition to these attributes, the ID number and diagnosis is provided for each breast mass sample.
+Source: Wisconsin Breast Cancer Data Set 9https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.names)
+
 Brief (no more than 1-2 paragraph) description about the dataset. Can copy from elsewhere, but cite the source (i.e. at least link, and explicitly say if it's copied from elsewhere).
 
 ### Methods
 
 Brief (no more than 1-2 paragraph) description about how you decided to approach solving it. Include:
+
 
 - pseudocode for this method (either created by you or cited from somewhere else)
 - why you chose this method
