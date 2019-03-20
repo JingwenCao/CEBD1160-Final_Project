@@ -43,7 +43,7 @@ Whilst there are several ways to determine whether breast cancer cells are cance
 
 ### Methods
 
-All supervised classification training models from the Scikit Learn resource for generalized linear models were selected to be assessed to determine the model that most accurately predicted whether a sample was malignant or benign [4]. These include: Logistic Regression, Support Vector Machines, Stochastic Gradient Descent, Nearest Neighbor, Naïve Bays, Decision Trees, and Ensemble Methods. All data was split into three groups: Training data, test data, and validation data, and subsequently normalized, as they varied drastically in magnitude [3]. All pseudocode can be found here (hyperlink). Accuracy scores for all models were plotted in a histogram, as shown in Figure 1 below.
+All supervised classification training models from the Scikit Learn resource for generalized linear models were selected to be assessed to determine the model that most accurately predicted whether a sample was malignant or benign [4]. These include: Logistic Regression, Support Vector Machines, Stochastic Gradient Descent, Nearest Neighbor, Naïve Bayes, Decision Trees, and Ensemble Methods. All data was split into three groups: Training data, test data, and validation data, and subsequently normalized, as they varied drastically in magnitude [3]. All pseudocode can be found here (hyperlink). Accuracy scores for all models were plotted in a histogram, as shown in Figure 1 below.
 
 #### Sources:
 - *[3] Normalizing data (https://medium.com/@urvashilluniya/why-data-normalization-is-necessary-for-machine-learning-models-681b65a05029)*
