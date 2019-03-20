@@ -1,9 +1,8 @@
-# cebd1160_project_template
-Instructions and template for final projects.
+# CEBD1160 - Wisconsin Breast Cancer
 
 | Name | Date |
 |:-------|:---------------|
-|Jingwen Cao | Completion date|
+|Jingwen Cao | March 23, 2019|
 
 -----
 
@@ -38,9 +37,9 @@ Derived from Diffusion-Weighted Magnetic Resonance Imaging (DWI, d-MRI), we have
 
 Whilst there are several ways to determine whether breast cancer cells are cancerous or not, one of the less invasive ways is via FNA (fine needle aspiration), wherein a thin, hollow needle is used to withdraw tissue or fluid from a suspicious area [1]. The Wisconsin Breast Cancer Data Set consists of 569 instances of digitized images of breast masses collected by FNA, and is relatively clean and noise-free. Each image is tagged with an ID number, as well as its diagnosis (benign or malignant), and the means, standard errors, and “worst” or largest values of ten features are described for each image [2]. Thus, this dataset is well suited to try to assess which machine-learning model best predicts whether breast mass cells are benign or malignant. The analysis will be conducted by Jingwen Cao, using the following libraries: Sklearn, Matplotlib, ____________, ___________. The graphs represent _____________.
 
-Sources: 
-[1] FNA (https://www.cancer.org/cancer/breast-cancer/screening-tests-and-early-detection/breast-biopsy/fine-needle-aspiration-biopsy-of-the-breast.html)
-[2] Wisconsin Breast Cancer Data Set (https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.names)
+#### *Sources: *
+- *[1] FNA (https://www.cancer.org/cancer/breast-cancer/screening-tests-and-early-detection/breast-biopsy/fine-needle-aspiration-biopsy-of-the-breast.html)*
+- *[2] Wisconsin Breast Cancer Data Set (https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.names)*
 
 ### Methods
 
