@@ -37,7 +37,7 @@ Derived from Diffusion-Weighted Magnetic Resonance Imaging (DWI, d-MRI), we have
 
 Whilst there are several ways to determine whether breast cancer cells are cancerous or not, one of the less invasive ways is via FNA (fine needle aspiration), wherein a thin, hollow needle is used to withdraw tissue or fluid from a suspicious area [1]. The Wisconsin Breast Cancer Data Set consists of 569 instances of digitized images of breast masses collected by FNA, and is relatively clean and noise-free. Each image is tagged with an ID number, as well as its diagnosis (benign or malignant), and the means, standard errors, and “worst” or largest values of ten features are described for each image [2]. Thus, this dataset is well suited to try to assess which machine-learning model best predicts whether breast mass cells are benign or malignant. The analysis will be conducted by Jingwen Cao, using the following libraries: Sklearn, Matplotlib, ____________, ___________. The graphs represent _____________.
 
-#### *Sources: *
+#### Sources:
 - *[1] FNA (https://www.cancer.org/cancer/breast-cancer/screening-tests-and-early-detection/breast-biopsy/fine-needle-aspiration-biopsy-of-the-breast.html)*
 - *[2] Wisconsin Breast Cancer Data Set (https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.names)*
 
@@ -45,9 +45,9 @@ Whilst there are several ways to determine whether breast cancer cells are cance
 
 All supervised classification training models from the Scikit Learn resource for generalized linear models were selected to be assessed to determine the model that most accurately predicted whether a sample was malignant or benign [4]. These include: Logistic Regression, Support Vector Machines, Stochastic Gradient Descent, Nearest Neighbor, Naïve Bays, Decision Trees, and Ensemble Methods. All data was split into three groups: Training data, test data, and validation data, and subsequently normalized, as they varied drastically in magnitude [3]. All pseudocode can be found here (hyperlink). Accuracy scores for all models were plotted in a histogram, as shown in Figure 1 below.
 
-Sources:
-[3] Normalizing data (https://medium.com/@urvashilluniya/why-data-normalization-is-necessary-for-machine-learning-models-681b65a05029)
-[4] Supervised Training models (https://scikit-learn.org/stable/supervised_learning.html)
+#### Sources:
+- *[3] Normalizing data (https://medium.com/@urvashilluniya/why-data-normalization-is-necessary-for-machine-learning-models-681b65a05029)*
+- *[4] Supervised Training models (https://scikit-learn.org/stable/supervised_learning.html)*
 
 Figure 1
 
