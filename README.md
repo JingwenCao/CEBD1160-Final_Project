@@ -48,8 +48,11 @@ All supervised classification training models from the Scikit Learn resource for
 #### Sources:
 - *[3] Normalizing data (https://medium.com/@urvashilluniya/why-data-normalization-is-necessary-for-machine-learning-models-681b65a05029)*
 - *[4] Supervised Training models (https://scikit-learn.org/stable/supervised_learning.html)*
-- 
+- *[5] https://markd87.github.io/articles/ml.html
+- *[6] https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html
+- *[7] http://benalexkeen.com/k-nearest-neighbours-classification-in-python/
 
+##### Figure 1
 ![Figure 1](https://raw.githubusercontent.com/JingwenCao/CEBD1160-Final_Project/master/Classifiers_Performance.png)
 
 
