@@ -8,7 +8,7 @@ from argparse import ArgumentParser
 from sklearn.datasets import load_breast_cancer
 from sklearn import metrics
 from sklearn import model_selection
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -18,20 +18,29 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.decomposition import PCA
 from matplotlib.colors import ListedColormap
 from mpl_toolkits.mplot3d import Axes3D
 
 # 2. Load data
 breastcancer = load_breast_cancer()
-data, headers, target = breastcancer.data, breastcancer.feature_names, breastcancer.target
+X, headers, y = breastcancer.data, breastcancer.feature_names, breastcancer.target
+
+# 3. Standardize data
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
 
 # 3. Split data into training data and test data
-X_train, X_test, Y_train, Y_test = model_selection.train_test_split(data, target, test_size=0.25, random_state=0)
+X_train, X_test, Y_train, Y_test = \
+    train_test_split(X, y, test_size=.4, random_state=42)
 
-# 4. Standardize data
-scaler = MinMaxScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
+# 3a. Make data two dimensional
+pca_model = PCA(n_components=2)
+pca_model.fit(X_train)
+X_train = pca_model.transform(X_train)
+X_test = pca_model.transform(X_test)
+X_train[:5]
+
 
 # 5. Perform all classifications using various models
 # 5a. Define all models
@@ -62,63 +71,62 @@ ppt.xticks(ind, name_list)
 ppt.title("Classifier Performance")
 i=0
 for i in range(len(score)):
-    ppt.annotate(score[i], xy=(i-0.4,0.99))
+    ppt.annotate(score[i], xy=(i-0.4,0.95))
     i = i+1
-ppt.savefig ("ClassifiersPerformance.png", format="PNG")
+ppt.savefig ("Classifiers_Performance.png", format="PNG")
 
 # 6. Plot all classification plots
 fig = ppt.figure(figsize=(27,27))
 
 # 6a. Plot three attributes that were my GOAT
-benign_rows = data[breastcancer.target == 0]
-malignant_rows = data[breastcancer.target == 1]
+#benign_rows = data[breastcancer.target == 0]
+#malignant_rows = data[breastcancer.target == 1]
 
 matplotlib.style.use('ggplot')
+h = 0.02 
 
-ax = fig.add_subplot(3,3,1, projection='3d')
-line1 = ax.scatter(benign_rows[:,1], benign_rows[:,3], benign_rows[:,7])
-line2 = ax.scatter(malignant_rows[:,1], malignant_rows[:,3], malignant_rows[:,7])
-ax.legend((line1, line2), ('Benign', 'Malignant'))
-ax.set_xlabel('Mean Texture')
-ax.set_ylabel('Mean Area')
-ax.set_zlabel('Mean Concave Points')
-ppt.savefig ("GOAT.png", format="PNG")
-
-for i in [2,3,4,5,6,7,8,9]:
-    x_min,x_max=data[:,1].min() - .5, data[:,1].max() + .5
-    y_min,y_max=data[:,3].min() - .5, data[:,3].max() + .5
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.2), np.arange(y_min, y_max, 0.2))
-    cm = ppt.cm.RdBu
-    cm_bright = ListedColormap(['#FF0000', '#0000FF'])
-    ax = ppt.subplot(3,3,i)
-    ax.set_title(" Classification Graph")
-    ax.scatter(X_train[:,1], X_train[:,3], c=Y_train, cmap=cm_bright, edgecolors='k')
-    ax.scatter(X_test[:,1], X_test[:,3], c=Y_test, cmap=cm_bright, alpha=0.6, edgecolors='k')
-    ax.set_xlim()
-    ppt.savefig ("GOAT.png", format="PNG")
-    i+=1
+for i in [1,2,3,4,5,6,7,8,9]:
+	x_min, x_max = X[:, 0].min() - .5, X[:, 0].max() + .5
+	y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5
+	xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+	                     np.arange(y_min, y_max, h))
+	cm = ppt.cm.RdBu
+	cm_bright = ListedColormap(['#FF0000', '#0000FF'])
+	ax = ppt.subplot(3,3,i)
+	ax.set_title(" Classification Graph")
+	plot1=ax.scatter(X_train[:,0], X_train[:,1], c=Y_train, cmap=cm_bright, edgecolors='k')
+	plot2=ax.scatter(X_test[:,0], X_test[:,1], c=Y_test, cmap=cm_bright, alpha=0.6, edgecolors='k')
+	ax.legend((plot1, plot2), ('Training Data', 'Test Data'))
+	ax.set_xlim(xx.min(), xx.max())
+	ax.set_ylim(yy.min(), yy.max())
+	ax.set_xticks(())
+	ax.set_yticks(())
 
 # 6b. Plot decision boundary function
 def plot_decision_boundary(model,data,position):
+    ax = ppt.subplot(3,3,position)
+    model.fit(X_train, Y_train)
+    score = model.score(X_test, Y_test)
+
     if hasattr(model, "decision_function"):
     	Z = model.decision_function(np.c_[xx.ravel(), yy.ravel()])
     else:
-    	Z = model.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:,1]
+        Z = model.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:,1]
 
     Z = Z.reshape(xx.shape)
-    
-    ax.contourf([xx, yy], Z, cmap=cm, alpha=.8)
+    ax.contourf(xx, yy, Z, cmap=cm, alpha=.8, norm=None)
 
-    ax.scatter(X_train[:,1], X_train[:,3], c=Y_train, cmap=cm_bright, edgecolors='k')
+    ax.scatter(X_train[:,0], X_train[:,1], c=Y_train, cmap=cm_bright, edgecolors='k')
+    ax.scatter(X_test[:,0], X_test[:,1], c=Y_test, cmap=cm_bright, alpha=0.3, edgecolors='k')
 
-    ax.scatter(X_test[:,1], X_test[:,3], c=Y_test, cmap=cm_bright, edgecolors='k', alpha=0.6)
-
+    ax.text(xx.max() - .3, yy.min() + .3, ('%.2f' % score).lstrip('0'),
+            size=15, horizontalalignment='right')
     ax.set_xlim(xx.min(), xx.max())
     ax.set_ylim(yy.min(), yy.max())
     ax.set_xticks(())
     ax.set_yticks(())
 
-    ppt.tight_layout()
-    ppt.savefig ("GOAT.png", format="PNG")
-
-plot_decision_boundary(classifiers[3], X_train, 2)
+for i in (range(len(classifiers))):
+	plot_decision_boundary(classifiers[i], X, i+2)
+ppt.tight_layout()
+ppt.savefig ("Classifiers_Plots.png", format="PNG")
