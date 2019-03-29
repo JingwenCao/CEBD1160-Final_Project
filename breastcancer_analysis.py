@@ -93,7 +93,7 @@ for i in [1,2,3,4,5,6,7,8,9]:
 	cm = ppt.cm.RdBu
 	cm_bright = ListedColormap(['#FF0000', '#0000FF'])
 	ax = ppt.subplot(3,3,i)
-	ax.set_title(" Classification Graph")
+	ax.set_title("Input Data")
 	plot1=ax.scatter(X_train[:,0], X_train[:,1], c=Y_train, cmap=cm_bright, edgecolors='k')
 	plot2=ax.scatter(X_test[:,0], X_test[:,1], c=Y_test, cmap=cm_bright, alpha=0.6, edgecolors='k')
 	ax.legend((plot1, plot2), ('Training Data', 'Test Data'))
@@ -125,6 +125,7 @@ def plot_decision_boundary(model,data,position):
     ax.set_ylim(yy.min(), yy.max())
     ax.set_xticks(())
     ax.set_yticks(())
+    ax.set_title(cla_names[i])
 
 for i in (range(len(classifiers))):
 	plot_decision_boundary(classifiers[i], X, i+2)
