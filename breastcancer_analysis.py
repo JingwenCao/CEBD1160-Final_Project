@@ -71,7 +71,7 @@ ppt.xticks(ind, name_list)
 ppt.title("Classifier Performance")
 i=0
 for i in range(len(score)):
-    ppt.annotate(score[i], xy=(i-0.4,0.95))
+    ppt.annotate(score[i], xy=(i-0.4,0.99))
     i = i+1
 ppt.savefig ("Classifiers_Performance.png", format="PNG")
 
