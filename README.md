@@ -41,7 +41,7 @@ All supervised classification training models from the Scikit Learn resource for
 - *[4] Supervised Training models (https://scikit-learn.org/stable/supervised_learning.html)*
 
 ##### Figure 1
-![Figure 1](https://raw.githubusercontent.com/JingwenCao/CEBD1160-Final_Project/master/Classifiers_Performance.png)
+![Figure 1](https://github.com/JingwenCao/CEBD1160-Final_Project/blob/master/Classifiers_Performance.png)
 
 
 ### Results
