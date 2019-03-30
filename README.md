@@ -10,7 +10,7 @@
 Your repository should include the following:
 
 - Python script for your analysis: breastcancer_analysis.py
-- Results figure/saved file: figures/
+- Results figures: Classifiers_Plots.png, Classifiers_Performance.png
 - Dockerfile for your experiment: Dockerfile
 - runtime-instructions in a file named RUNME.md
 
