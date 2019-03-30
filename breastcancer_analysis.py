@@ -1,10 +1,8 @@
 # 1. Import all libraries
 import numpy as np
-import pandas as pd
 import matplotlib
 import matplotlib.pyplot as ppt
 from matplotlib.colors import ListedColormap
-from argparse import ArgumentParser
 from sklearn.datasets import load_breast_cancer
 from sklearn import metrics
 from sklearn import model_selection
@@ -20,7 +18,6 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.decomposition import PCA
 from matplotlib.colors import ListedColormap
-from mpl_toolkits.mplot3d import Axes3D
 
 # 2. Load data
 breastcancer = load_breast_cancer()
@@ -79,9 +76,6 @@ ppt.savefig ("Classifiers_Performance.png", format="PNG")
 fig = ppt.figure(figsize=(27,27))
 
 # 6a. Plot three attributes that were my GOAT
-#benign_rows = data[breastcancer.target == 0]
-#malignant_rows = data[breastcancer.target == 1]
-
 matplotlib.style.use('ggplot')
 h = 0.02 
 
